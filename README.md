@@ -1,39 +1,36 @@
-# Dhirajp.dev
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-My personal website built with Next.js and Tailwind CSS. Includes my blog, projects, and reading list.
+## Getting Started
 
--   **UI Library**: [React](https://react.dev/)
--   **Framework**: [Next.js](https://nextjs.org/)
--   **Styling**: [Tailwind CSS](https://tailwindcss.com)
--   **Components**: [Shadcn/ui](https://ui.shadcn.com)
--   **Content**: [MDX](https://mdxjs.com) and [Contentlayer](https://contentlayer.dev)
--   **Deployment**: [Vercel](https://vercel.com)
--   **Analytics**: [Google Analytics](https://analytics.google.com)
-
-## Inspiration
-
--   [leerob.io](https://leerob.io)
--   [jahir.dev](https://jahir.dev)
--   [taxonomy](https://tx.shadcn.com/)
-
-## Running Locally
-
-This application requires Node.js v18.17+.
+First, run the development server:
 
 ```bash
-git clone https://github.com/dhiraj512/dhirajp.dev.git
-
-cd dhirajp.dev
-
-npm install
-
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Create a `.env.local` file similar to [`.env.example`](https://github.com/leerob/leerob.io/blob/main/.env.example).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## License
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-1. You are free to use this code as inspiration.
-2. Please do not copy it directly.
-3. Crediting the author is appreciated.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
