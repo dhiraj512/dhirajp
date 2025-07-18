@@ -99,11 +99,7 @@ export default function Navbar() {
 
     return (
         <div className='pointer-events-none fixed bottom-0 inset-x-0'>
-            <div className="fixed -bottom-35 left-1/2 transform -translate-x-1/2 w-96 h-80 bg-gradient-to-t from-indigo-500/50 via-purple-500/25 to-pink-500/10 opacity-80 rounded-full blur-3xl" />
-            <m.div
-                layout
-                className='z-20 mx-auto mb-8 flex w-fit space-x-2 rounded-xl border pointer-events-auto relative h-full items-center bg-background/80 backdrop-blur-2xl p-1.5 shadow-lg'
-            >
+            <m.div layout className='z-20 mx-auto mb-8 flex w-fit space-x-2 rounded-xl border pointer-events-auto relative h-full items-center bg-background/80 backdrop-blur-2xl p-1.5 shadow-lg'>
                 <div className="relative">
                     <div
                         className="absolute h-10 w-10 rounded-lg bg-muted transition-all duration-300 ease-out"

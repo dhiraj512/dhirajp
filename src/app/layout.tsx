@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/app/theme-provider";
+import Navbar from "@/components/app/navbar";
+import Header from "@/components/app/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +35,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="size-full pointer-events-none fixed inset-0 z-[99] overflow-hidden bg-[url(/noise.png)] opacity-40 dark:opacity-60" />
+          <div className="fixed -bottom-35 left-1/2 transform -translate-x-1/2 w-96 h-80 bg-gradient-to-t from-primary via-primary/25 to-transparent opacity-80 rounded-full blur-3xl" />
           <div className="relative flex size-full flex-col">
+            <Header />
             <main className="mx-auto my-20 w-full max-w-screen-sm flex-1 p-4">
               {children}
             </main>
+            <Navbar />
           </div>
         </ThemeProvider>
       </body>

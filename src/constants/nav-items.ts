@@ -12,8 +12,8 @@ export const NavItems: NavItem[] = [
         icon: "home",
     },
     {
-        label: "Labs",
-        path: "/labs",
+        label: "Lab",
+        path: "/lab",
         icon: "flask",
     },
     {
