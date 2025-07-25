@@ -119,7 +119,7 @@ export default function Navbar() {
                             }}
                         />
                     )}
-                    <div className="relative flex items-center gap-1">
+                    <div className="relative flex items-center gap-0">
                         {allItems.map((item, index) => {
                             if (item.type === "scrollToTop") {
                                 return (
@@ -146,7 +146,7 @@ export default function Navbar() {
                                                     )}
                                                     onClick={item.action}
                                                 >
-                                                    <Icon.up className="h-5 w-5" />
+                                                    <Icon.arrowUp className="h-5 w-5" />
                                                 </m.button>
                                             </m.div>
                                         )}
