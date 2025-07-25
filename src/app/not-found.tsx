@@ -19,13 +19,12 @@ export default function NotFound() {
             <p className="text-center text-muted-foreground mb-8 max-w-md">
                 We couldn&apos;t find the page you&apos;re looking for. It might have been moved, renamed, or doesn&apos;t exist.
             </p>
-            <div className="mt-4 flex gap-4">
-                <Button asChild>
-                    <Link href="/">
-                        <Home className="mr-2 h-4 w-4" /> Return Home
-                    </Link>
-                </Button>
-            </div>
+            <Button asChild>
+                <Link href="/" className="text-white">
+                    <Home className="h-4 w-4 mt-0.5" />
+                    <span>Return Home</span>
+                </Link>
+            </Button>
         </div>
     );
 }
