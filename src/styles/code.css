@@ -1,0 +1,90 @@
+[data-rehype-pretty-code-figure] {
+    @apply relative my-6 mx-auto overflow-hidden rounded-lg border border-neutral-800 flex flex-col;
+}
+
+[data-rehype-pretty-code-title] {
+    @apply h-10 px-4 w-full flex gap-x-2 items-center text-sm font-mono text-white bg-slate-950 border-b border-neutral-800;
+}
+
+/* Code title text */
+[data-rehype-pretty-code-title]::after {
+    content: attr(data-rehype-pretty-code-title);
+    @apply ml-2 text-sm font-sans truncate;
+}
+
+[data-rehype-pretty-code-title]+pre {
+    @apply pt-12;
+}
+
+[data-rehype-pretty-code-figure] pre {
+    @apply p-4 overflow-x-auto bg-transparent;
+}
+
+[data-rehype-pretty-code-figure] code {
+    @apply text-sm leading-relaxed p-0 bg-transparent;
+    counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] code {
+    @apply grid w-full break-words rounded-none border-0 bg-transparent p-0;
+    counter-reset: line;
+    box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-figure] [data-line-numbers]>.line::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
+}
+
+code {
+    counter-reset: line;
+}
+
+code>[data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    @apply inline-block w-4 mr-4 text-right text-gray-500;
+}
+
+code[data-line-numbers-max-digits="2"]>[data-line]::before {
+    width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"]>[data-line]::before {
+    width: 3rem;
+}
+
+[data-highlighted-line] {
+    @apply !text-sky-300 bg-sky-800/40 border-l-sky-500 font-bold border-l-2;
+}
+
+[data-highlighted-chars] {
+    @apply !text-neon-cyan bg-neon-cyan/40 border-b-neon-cyan font-bold rounded-md px-1 py-0.5 border-b-2;
+}
+
+[data-chars-id] {
+    @apply shadow-none px-1 py-px border-b-2 font-bold;
+}
+
+[data-chars-id] span {
+    @apply !text-inherit;
+}
+
+[data-chars-id="v"] {
+    @apply !text-pink-500 bg-rose-800/30 border-b-pink-600;
+}
+
+[data-chars-id="s"] {
+    @apply !text-yellow-500 bg-yellow-800/30 border-b-yellow-600;
+}
+
+[data-chars-id="i"] {
+    @apply !text-purple-500 bg-purple-800/30 border-b-purple-600;
+}
