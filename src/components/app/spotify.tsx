@@ -106,7 +106,7 @@ export default function Spotify() {
 const RecentlyPlayedCard = ({ recentTrack }: { recentTrack: RecentTrack }) => {
     return (
         <AnimatePresence>
-            <Card className="w-full sm:max-w-xs my-2 rounded-lg bg-opacity-10 backdrop-blur-sm z-0 relative">
+            <Card className="w-full max-w-xs my-2 rounded-lg bg-opacity-10 backdrop-blur-sm z-0 relative">
                 <Image
                     src={recentTrack.albumImageUrl}
                     alt="Album Art"
@@ -216,7 +216,7 @@ const NowPlaying = ({ nowPlaying }: { nowPlaying: NowPlayingTrack }) => {
     const progressPercentage = (displayProgress / nowPlaying.duration) * 100
 
     return (
-        <Card className="w-full sm:max-w-xs my-2 rounded-lg bg-opacity-10 backdrop-blur-sm z-0 relative">
+        <Card className="w-full max-w-xs my-2 rounded-lg bg-opacity-10 backdrop-blur-sm z-0 relative">
             <Image
                 src={nowPlaying.albumImageUrl}
                 alt="Album Art"
