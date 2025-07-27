@@ -1,0 +1,32 @@
+- title: "Test Project 1"
+  description: "A test project to demonstrate my skills"
+  image: "/images/projects/test1.jpg"
+  technologies: ["React", "Node.js", "MongoDB"]
+  repository: "https://github.com/username/test-project-1"
+  liveUrl: "https://test1.example.com"
+  status: "completed"
+  featured: false
+  startDate: "2024-06-01"
+  endDate: "2024-08-15"
+
+- title: "Test Project 2"
+  description: "Another test project to showcase my capabilities"
+  image: "/images/projects/test2.jpg"
+  technologies: ["Vue.js", "Express.js", "MySQL"]
+  repository: "https://github.com/username/test-project-2"
+  liveUrl: "https://test2.example.com"
+  status: "completed"
+  featured: false
+  startDate: "2024-09-01"
+  endDate: "2024-11-30"
+
+- title: "Test Project 3"
+  description: "A third test project to demonstrate my skills"
+  image: "/images/projects/test3.jpg"
+  technologies: ["Angular", "TypeScript", "PostgreSQL"]
+  repository: "https://github.com/username/test-project-3"
+  liveUrl: "https://test3.example.com"
+  status: "completed"
+  featured: true
+  startDate: "2023-12-01"
+  endDate: "2023-12-31"

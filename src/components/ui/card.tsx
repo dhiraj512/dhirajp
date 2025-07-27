@@ -1,6 +1,7 @@
 import * as React from "react"
 import { cn, formatDate } from "@/lib/utils"
-import { Experiment } from "@/content"
+import { Experiment, Project } from "@/content"
+import { Badge } from "./badge"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -49,4 +50,43 @@ const ExperimentCard = React.forwardRef<
 ))
 ExperimentCard.displayName = "ExperimentCard"
 
-export { Card, ExperimentCard }
+const ProjectCard = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & {
+    project: Project
+    onSelect: (project: Project) => void
+  }
+>(({ className, project, onSelect, ...props }, ref) => (
+  <Card
+    ref={ref}
+    onClick={() => onSelect(project)}
+    className={cn(
+      "group cursor-pointer border rounded-lg p-4 hover:shadow-md transition-all duration-200 hover:border-primary/20",
+      className
+    )}
+    {...props}
+  >
+    <div className="flex items-start justify-between">
+      <div className="flex-1">
+        <div className="flex items-center gap-3 mb-2">
+          <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+            {project.title}
+          </h3>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {project.technologies.map((tech) => (
+            <Badge key={tech} variant="outline" className="text-xs">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+      </div>
+      <div className="text-sm text-muted-foreground ml-6">
+        {formatDate(project.displayDate.toString())}
+      </div>
+    </div>
+  </Card>
+))
+ProjectCard.displayName = "ProjectCard"
+
+export { Card, ExperimentCard, ProjectCard }

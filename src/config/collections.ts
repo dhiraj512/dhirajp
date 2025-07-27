@@ -29,4 +29,26 @@ const Experiments = defineCollection({
         }),
 });
 
-export { Experiments };
+const Projects = defineCollection({
+    name: 'Project',
+    pattern: 'projects.yaml',
+    schema: s.object({
+        title: s.string(),
+        description: s.string(),
+        image: s.string(),
+        technologies: s.array(s.string()),
+        repository: s.string().url().optional(),
+        liveUrl: s.string().url().optional(),
+        status: s.enum(['completed', 'in-progress']).default('completed'),
+        featured: s.boolean().default(false),
+        startDate: s.string().transform((str) => new Date(str)),
+        endDate: s.string().optional().transform((str) => str ? new Date(str) : null)
+    })
+        .transform((data) => ({
+            ...data,
+            year: data.startDate.getFullYear(),
+            displayDate: data.endDate ? data.endDate : data.startDate
+        }))
+});
+
+export { Experiments, Projects };
