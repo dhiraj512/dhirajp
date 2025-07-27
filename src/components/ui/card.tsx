@@ -1,6 +1,6 @@
 import * as React from "react"
-
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
+import { Experiment } from "@/content"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -17,60 +17,36 @@ const Card = React.forwardRef<
 ))
 Card.displayName = "Card"
 
-const CardHeader = React.forwardRef<
+const ExperimentCard = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+  React.HTMLAttributes<HTMLDivElement> & {
+    experiment: Experiment
+  }
+>(({ className, experiment, ...props }, ref) => (
+  <Card ref={ref}
+    className={cn("block border rounded-lg p-4 space-y-2 hover:shadow-md transition-shadow",
+      className)}
     {...props}
-  />
+  >
+    <div className="flex items-center justify-between">
+      <span className="text-xs bg-secondary px-2 py-1 rounded">
+        {experiment.category}
+      </span>
+      <span className="text-xs text-muted-foreground">
+        {experiment.status}
+      </span>
+    </div>
+    <h3 className="text-lg font-semibold">
+      {experiment.title}
+    </h3>
+    <div className="flex items-center justify-start gap-2 text-xs text-muted-foreground">
+      <time dateTime={experiment.publishedDate}>
+        {formatDate(experiment.publishedDate)}
+      </time>
+      <span>{experiment.readingTime} min read</span>
+    </div>
+  </Card>
 ))
-CardHeader.displayName = "CardHeader"
+ExperimentCard.displayName = "ExperimentCard"
 
-const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
-    {...props}
-  />
-))
-CardTitle.displayName = "CardTitle"
-
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-CardDescription.displayName = "CardDescription"
-
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
-CardContent.displayName = "CardContent"
-
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
-    {...props}
-  />
-))
-CardFooter.displayName = "CardFooter"
-
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, ExperimentCard }

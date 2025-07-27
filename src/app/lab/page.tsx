@@ -9,6 +9,14 @@ export const metadata = generateSEO({
     url: "/lab",
 })
 
-export default function lab() {
-    return <LabList experiments={experiments} />
+interface LabPageProps {
+    searchParams?: Promise<{
+        query?: string;
+    }>;
+}
+
+export default async function lab(props: LabPageProps) {
+    const searchParams = await props.searchParams;
+    const query = searchParams?.query || '';
+    return <LabList experiments={experiments} query={query} />
 }
