@@ -17,8 +17,8 @@ export const NavItems: NavItem[] = [
         icon: "flask",
     },
     {
-        label: "Resources",
-        path: "/resources",
-        icon: "bookopen",
+        label: "Projects",
+        path: "/projects",
+        icon: "project",
     },
 ]
