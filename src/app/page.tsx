@@ -1,3 +1,4 @@
+import NowPlaying from "@/components/app/spotify"
 import { Face } from "@/components/motion/face"
 import { TabGroup } from "@/components/ui/tab-group"
 import Image from "next/image"
@@ -38,6 +39,7 @@ export default function Home() {
           },
         ]}
       />
+      <NowPlaying />
     </div>
   )
 }

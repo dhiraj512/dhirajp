@@ -6,7 +6,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-
 /**
  * Format a date string using date-fns with predefined format options
  * @param {string} dateString - ISO date string (e.g., "2023-11-15T00:00:00.000Z")
@@ -35,3 +34,10 @@ export function formatDate(dateString: string, formatType: FormatType = 'medium'
     return dateString; // Return original string if formatting fails
   }
 };
+
+export function formatLength(progress_ms: number): string {
+  const minutes = Math.floor(progress_ms / 60000);
+  const seconds = Math.floor((progress_ms % 60000) / 1000);
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+  return `${minutes}:${formattedSeconds}`;
+}
