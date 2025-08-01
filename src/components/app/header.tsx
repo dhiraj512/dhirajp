@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { Face } from "../motion/face";
+import { Face } from "./face";
 
 export default function Header() {
     const pathname = usePathname();

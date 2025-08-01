@@ -1,5 +1,5 @@
 import NowPlaying from "@/components/app/spotify"
-import { Face } from "@/components/motion/face"
+import { Face } from "@/components/app/face"
 import { TabGroup } from "@/components/ui/tab-group"
 import Image from "next/image"
 

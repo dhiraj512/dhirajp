@@ -5,12 +5,12 @@ import { ExperimentCard } from '../ui/card';
 import Search from '../ui/search';
 import { getFilteredExperiments } from '@/lib/content';
 
-interface LabListProps {
+interface ExpListProps {
     experiments: Experiment[]
     query?: string
 }
 
-export const LabList = ({ experiments, query }: LabListProps) => {
+export const ExpList = ({ experiments, query }: ExpListProps) => {
     const filteredExperiments = getFilteredExperiments(query || '');
     return (
         <div className="space-y-8">
