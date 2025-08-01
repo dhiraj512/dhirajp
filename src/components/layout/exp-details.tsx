@@ -2,9 +2,9 @@ import { MDX } from '@/components/mdx'
 import { siteConfig } from '@/config/site'
 import { Experiment } from '@/content'
 import { formatDate } from '@/lib/utils'
-import Image from 'next/image'
 import React from 'react'
-
+import ViewCounter from '../ui/view-counter'
+import LikeButton from '../ui/like-button'
 interface ExperimentDetailsProps {
     experiment: Experiment
 }
@@ -19,6 +19,7 @@ export const ExperimentDetails = ({ experiment }: ExperimentDetailsProps) => {
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <span>Published: {new Date(experiment.publishedDate).toLocaleDateString()}</span>
                     <span>{experiment.readingTime} min read</span>
+                    <ViewCounter slug={experiment.slug} />
                 </div>
             </header>
 
@@ -28,18 +29,18 @@ export const ExperimentDetails = ({ experiment }: ExperimentDetailsProps) => {
             </article>
 
             {/* Experiment Footer */}
-            <footer className="flex flex-wrap items-center justify-start gap-1.5 text-sm text-muted-foreground">
-                <div className="flex items-center gap-x-1">
+            <footer className="flex items-center justify-between mx-8 my-2 gap-1.5 text-sm text-muted-foreground">
+                <div className="flex items-center flex-wrap gap-x-1">
                     <span>
-                        Published by:
+                        Published by
                     </span>
-                    <Image src={siteConfig.author.image} alt={siteConfig.author.name} width={15} height={15} className="rounded-full" />
-                    <h4 className="font-medium">{siteConfig.author.name}</h4>
+                    <span className="font-medium">{siteConfig.author.name}</span>
                     <time>
                         on {formatDate(experiment.publishedDate)}
                     </time>
                 </div>
-            </footer >
+                <LikeButton slug={experiment.slug} />
+            </footer>
         </div>
     )
 }

@@ -23,7 +23,7 @@ export const env = createEnv({
         NEXT_PUBLIC_APP_NAME: z.string().min(1, "NEXT_PUBLIC_APP_NAME is required"),
     },
     server: {
-        DATABASE_URL: z.url("DATABASE_URL must be a valid URL").optional(),
+        DATABASE_URL: z.url("DATABASE_URL must be a valid URL"),
 
         SPOTIFY_CLIENT_ID: z.string(),
         SPOTIFY_CLIENT_SECRET: z.string(),

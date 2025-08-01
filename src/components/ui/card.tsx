@@ -2,6 +2,7 @@ import * as React from "react"
 import { cn, formatDate } from "@/lib/utils"
 import { Experiment, Project } from "@/content"
 import { Badge } from "./badge"
+import ViewCounter from "./view-counter"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -25,27 +26,19 @@ const ExperimentCard = React.forwardRef<
   }
 >(({ className, experiment, ...props }, ref) => (
   <Card ref={ref}
-    className={cn("block border rounded-lg p-4 space-y-2 hover:shadow-md transition-shadow",
+    className={cn("group cursor-pointer border rounded-lg p-4 hover:shadow-md transition-all duration-200 hover:border-primary/20",
       className)}
     {...props}
   >
-    <div className="flex items-center justify-between">
-      <span className="text-xs bg-secondary px-2 py-1 rounded">
-        {experiment.category}
-      </span>
-      <span className="text-xs text-muted-foreground">
-        {experiment.status}
-      </span>
-    </div>
-    <h3 className="text-lg font-semibold">
-      {experiment.title}
-    </h3>
-    <div className="flex items-center justify-start gap-2 text-xs text-muted-foreground">
+    <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
       <time dateTime={experiment.publishedDate}>
         {formatDate(experiment.publishedDate)}
       </time>
-      <span>{experiment.readingTime} min read</span>
+      <ViewCounter slug={experiment.slug} incrementView={false} />
     </div>
+    <h2 className="text-xl group-hover:text-primary transition-colors md:text-2xl font-semibold">
+      {experiment.title}
+    </h2>
   </Card>
 ))
 ExperimentCard.displayName = "ExperimentCard"
