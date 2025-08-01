@@ -99,10 +99,10 @@ export default function Navbar() {
 
     return (
         <div className='pointer-events-none fixed bottom-0 inset-x-0'>
-            <m.div layout className='z-20 mx-auto mb-8 flex w-fit space-x-2 rounded-xl border pointer-events-auto relative h-full items-center bg-background/80 backdrop-blur-2xl p-1.5 shadow-lg'>
+            <m.div layout className='z-20 mx-auto mb-8 flex w-fit space-x-2 rounded-xl border pointer-events-auto relative h-full items-center bg-background/80 backdrop-blur-2xl p-2 shadow-lg'>
                 <div className="relative">
                     <div
-                        className="absolute h-10 w-10 rounded-lg bg-muted transition-all duration-300 ease-out"
+                        className="absolute size-12 sm:size-10 rounded-lg bg-muted transition-all duration-300 ease-out"
                         style={{
                             ...activeStyle,
                             opacity: 1,
@@ -111,7 +111,7 @@ export default function Navbar() {
                     />
                     {hoveredIndex !== null && (
                         <div
-                            className="absolute h-10 w-10 rounded-lg bg-muted/80 transition-all duration-300 ease-out"
+                            className="absolute size-12 sm:size-10 rounded-lg bg-muted/80 transition-all duration-300 ease-out"
                             style={{
                                 ...hoverStyle,
                                 opacity: 0.8,
@@ -119,7 +119,7 @@ export default function Navbar() {
                             }}
                         />
                     )}
-                    <div className="relative flex items-center gap-1">
+                    <div className="relative flex items-center gap-2 sm:gap-0">
                         {allItems.map((item, index) => {
                             if (item.type === "scrollToTop") {
                                 return (
@@ -139,14 +139,14 @@ export default function Navbar() {
                                                     transition={{ duration: 0.3 }}
                                                     ref={(el) => { tabRefs.current[index] = el }}
                                                     className={cn(
-                                                        "h-10 w-10 flex items-center justify-center",
+                                                        "size-12 sm:size-10 flex items-center justify-center",
                                                         "cursor-pointer rounded-lg z-10 transition-colors",
                                                         "focus-visible:outline-none",
                                                         "text-foreground"
                                                     )}
                                                     onClick={item.action}
                                                 >
-                                                    <Icon.up className="h-5 w-5" />
+                                                    <Icon.arrowUp className="size-6 sm:size-5" />
                                                 </m.button>
                                             </m.div>
                                         )}
@@ -160,7 +160,7 @@ export default function Navbar() {
                                     key={item.label}
                                     ref={el => { tabRefs.current[index] = el }}
                                     className={cn(
-                                        "h-10 w-10 flex items-center justify-center",
+                                        "size-12 sm:size-10 flex items-center justify-center",
                                         "cursor-pointer rounded-lg z-10 transition-colors",
                                         "hover:text-primary focus-visible:outline-none",
                                         isActive ? "text-primary" : "text-foreground"
@@ -176,12 +176,10 @@ export default function Navbar() {
                                             transition={{ duration }}
                                         >
                                             <m.svg
-                                                width="20"
-                                                height="20"
-                                                viewBox="0 0 25 25"
+                                                viewBox="0 0 24 24"
                                                 fill="none"
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                className="text-warning"
+                                                className="text-warning size-6 sm:size-5"
                                             >
                                                 {mounted && (
                                                     <>
@@ -290,7 +288,7 @@ export default function Navbar() {
                                             </m.svg>
                                         </m.div>
                                     ) : (
-                                        ThemeIcon && <ThemeIcon className="h-5 w-5" />
+                                        ThemeIcon && <ThemeIcon className="size-6 sm:size-5" />
                                     )}
                                 </button>
                             )

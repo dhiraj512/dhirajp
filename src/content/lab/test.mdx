@@ -1,0 +1,85 @@
+---
+title: "Complete MDX Components Showcase"
+description: "A comprehensive demonstration of all available MDX components including headings, lists, tables, buttons, code blocks, and custom components."
+publishedDate: "2024-03-15"
+thumbnail: "/profile.png"
+isPublished: true
+category: "Documentation"
+tags: ["mdx", "components", "tutorial", "showcase"]
+keywords: ["mdx components", "react", "nextjs", "markdown", "documentation"]
+status: "Completed"
+---
+	![profile](/profile.jpg)
+
+	# Complete MDX Components Showcase
+
+This post demonstrates every available MDX component in our system. Use this as a reference for creating rich content.
+
+## Text and Typography
+
+### Headings Hierarchy
+
+# Heading 1 - Main Title
+## Heading 2 - Section Title  
+### Heading 3 - Subsection
+#### Heading 4 - Sub-subsection
+##### Heading 5 - Minor heading
+###### Heading 6 - Smallest heading
+
+### Text Formatting
+
+This is a paragraph with **bold text**, *italic text*, and `inline code`. You can combine these formatting options for **_bold italic text_** and even **`bold inline code`**.
+
+Here's another paragraph with an [external link to Next.js](https://nextjs.org) and an [internal link](/docs) to show how link handling works.
+
+This paragraph demonstrates line breaks and spacing. Each paragraph automatically gets proper margins and spacing for optimal readability in both light and dark modes.
+
+## Lists and Organization
+
+### Unordered Lists
+- First item with some basic content
+- Second item that spans multiple lines to show how the spacing and indentation works properly
+- Third item with **bold formatting**
+  - Nested item one with `inline code`
+  - Nested item two with a [link](https://example.com)
+  - Another nested item
+    - Deep nested item
+    - Another deep nested item
+
+### Ordered Lists
+1. First numbered item with detailed explanation
+2. Second numbered item showing how numbering works
+3. Third numbered item with nested content
+   1. Nested numbered item
+   2. Another nested item with **formatting**
+   3. Third nested with `code`
+4. Fourth item continuing the sequence
+
+### Mixed Lists
+1. Ordered item one
+   - Unordered nested item
+   - Another unordered nested
+2. Ordered item two
+   1. Ordered nested
+   2. Another ordered nested
+      - Mixed deep nesting
+      - Another mixed item
+
+## Code Examples
+
+### Inline Code
+Use the `useState` hook to manage state. The `useEffect` hook handles side effects. Import with `import React from 'react'`.
+
+
+```ts title="typescript"
+const array = ["apple", "banana", "orange"];
+
+const object = array.reduce((acc, value, index) => {
+	acc[`fruit ${index + 1}`] = value;
+	return acc;
+}, {} as { [key: string]: string });
+
+console.log(object);
+
+// Output: { 'fruit 1': 'apple', 'fruit 2': 'banana', 'fruit 3': 'orange' }
+```
