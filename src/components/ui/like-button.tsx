@@ -136,7 +136,7 @@ export default function LikeButton({ slug }: LikeButtonProps) {
                 {/* Heart Button */}
                 <motion.button
                     onClick={handleClick}
-                    disabled={isPending || currentUserLikes >= 3}
+                    disabled={isPending}
                     whileTap={{ scale: 0.95 }}
                     whileHover={{ scale: currentUserLikes >= 3 ? 1 : 1.1 }}
                     className={`
