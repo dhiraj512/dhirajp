@@ -12,7 +12,7 @@ export default function Error({
 }) {
     useEffect(() => {
         console.error(error);
-            document.title = 'An Error Occurred'
+        document.title = 'An Error Occurred'
     }, [error]);
 
     return (
