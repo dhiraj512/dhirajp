@@ -26,7 +26,7 @@ export const ExpList = ({ experiments, query }: ExpListProps) => {
             <div className="grid gap-4 grid-cols-1">
                 {filteredExperiments.length > 0 && (
                     filteredExperiments.map((experiment) => (
-                        <Link key={experiment.slug} href={experiment.slug}>
+                        <Link key={experiment.path} href={experiment.path}>
                             <ExperimentCard experiment={experiment} />
                         </Link>
                     ))

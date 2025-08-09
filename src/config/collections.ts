@@ -5,7 +5,7 @@ const Experiments = defineCollection({
     pattern: 'lab/**/*.mdx',
     schema: s
         .object({
-            slug: s.path(),
+            path: s.path(),
             title: s.string().max(99),
             description: s.string().max(999).optional(),
             publishedDate: s.isodate(),
@@ -21,9 +21,7 @@ const Experiments = defineCollection({
         .transform((data) => {
             return {
                 ...data,
-                // slug: data.path.split("/").slice(1).join("/"),
-                // slugAsParams: data.path.split("/").slice(2).join("/"),
-                slugAsParams: data.slug.split("/").slice(1).join("/"),
+                slug: data.path.split("/").slice(1).join("/"),
                 readingTime: data.metadata.readingTime,
             }
         }),

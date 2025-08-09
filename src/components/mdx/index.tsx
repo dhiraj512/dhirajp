@@ -129,7 +129,6 @@ const sharedComponents = {
         );
     },
 
-    // Button (using shadcn)
     button: ({ children, ...props }) => (
         <button {...props}>
             {children}
