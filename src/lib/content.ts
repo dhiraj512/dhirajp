@@ -11,9 +11,6 @@ const getExperimentBySlug = (slug: string): Experiment => {
     if (!experiment || (env.NODE_ENV === 'production' && !experiment.isPublished)) {
         notFound();
     }
-    if (!experiment) {
-        notFound();
-    }
     return experiment;
 }
 
