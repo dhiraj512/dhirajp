@@ -109,7 +109,7 @@ const ProjectDetails = ({ selectedProject, setSelectedProject }: ProjectDetailsP
                                     <div className="flex items-center gap-2">
                                         <span className="font-medium">Date:</span>
                                         <span className="text-muted-foreground">
-                                            {formatDate(selectedProject.displayDate.toString())}
+                                            {formatDate(selectedProject.displayDate.toISOString())}
                                         </span>
                                     </div>
                                 </div>

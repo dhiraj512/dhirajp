@@ -68,7 +68,7 @@ const CodeBlock = ({ children, collapsedHeight = 200, ...props }: CodeBlockProps
         {children}
       </pre>
       {showExpandButton && !isExpanded && (
-        <div className="absolute inset-x-0 -bottom-2 flex h-32 items-center justify-center  bg-gradient-to-t from-slate-900 via-slate-900/80 to-trasparent">
+        <div className="absolute inset-x-0 -bottom-2 flex h-32 items-center justify-center  bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent">
           <button type="button" onClick={toggleExpand} className="absolute bottom-6 text-white cursor-pointer text-base">
             Expand
           </button>
