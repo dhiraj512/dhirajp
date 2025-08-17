@@ -16,23 +16,23 @@ export default function Spotify() {
     const [recentTrack, setRecentTrack] = useState<RecentTrack | null>(null)
     const [isLoading, setIsLoading] = useState(true)
 
-    const fetchData = async () => {
-        try {
-            const [nowPlayingData, recentTrackData] = await Promise.all([
-                getCurrentlyPlaying(),
-                getRecentTrack()
-            ])
-
-            setNowPlaying(nowPlayingData)
-            setRecentTrack(recentTrackData)
-        } catch (error) {
-            console.error('Error fetching Spotify data:', error)
-        } finally {
-            setIsLoading(false)
-        }
-    }
-
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [nowPlayingData, recentTrackData] = await Promise.all([
+                    getCurrentlyPlaying(),
+                    getRecentTrack()
+                ])
+
+                setNowPlaying(nowPlayingData)
+                setRecentTrack(recentTrackData)
+            } catch (error) {
+                console.error('Error fetching Spotify data:', error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+
         fetchData()
 
         // Set up periodic refresh every 15 seconds
