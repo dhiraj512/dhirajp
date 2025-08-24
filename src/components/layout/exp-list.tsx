@@ -14,14 +14,6 @@ export const ExpList = ({ experiments, query }: ExpListProps) => {
     const filteredExperiments = getFilteredExperiments(query || '');
     return (
         <div className="space-y-8">
-            <div className="space-y-2">
-                <h2 className="text-2xl font-semibold">
-                    Experiments
-                </h2>
-                <p className="text-base text-muted-foreground">
-                    Explore my experiments various technologies and concepts.
-                </p>
-            </div>
             <Search placeholder="Search experiments" />
             <div className="grid gap-4 grid-cols-1">
                 {filteredExperiments.length > 0 && (
