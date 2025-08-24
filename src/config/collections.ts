@@ -1,3 +1,4 @@
+import { createSlug } from "@/lib/utils";
 import { defineCollection, s } from "velite";
 
 const Experiments = defineCollection({
@@ -44,9 +45,11 @@ const Projects = defineCollection({
     })
         .transform((data) => ({
             ...data,
+            slug: createSlug(data.title),
             year: data.startDate.getFullYear(),
             displayDate: data.endDate ? data.endDate : data.startDate
         }))
 });
 
 export { Experiments, Projects };
+

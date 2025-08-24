@@ -1,12 +1,12 @@
 import Fuse from 'fuse.js';
-import { Experiment, Experiments, Project } from "@/content";
+import { Experiment, Experiments, Project, Projects } from "@/content";
 import { notFound } from "next/navigation";
 import { env } from "./env";
 
 const experiments = Experiments.filter((experiment) => experiment.isPublished === true)
 
 const getExperimentBySlug = (slug: string): Experiment => {
-    const experiment = experiments.find((exp) => exp.slugAsParams === slug);
+    const experiment = experiments.find((exp) => exp.slug === slug);
 
     if (!experiment || (env.NODE_ENV === 'production' && !experiment.isPublished)) {
         notFound();
@@ -26,6 +26,14 @@ const getProjectsByYear = (projects: Project[]) => {
         acc[project.year].push(project)
         return acc
     }, {} as Record<number, Project[]>)
+}
+
+const getProjectBySlug = (slug: string): Project => {
+    const project = Projects.find((project) => project.slug === slug);
+    if (!project) {
+        notFound();
+    }
+    return project;
 }
 
 // Enhanced filter function with Fuse.js
@@ -71,4 +79,5 @@ export {
     getFilteredExperiments,
     getExperimentBySlug,
     getProjectsByYear,
+    getProjectBySlug,
 }

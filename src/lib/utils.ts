@@ -41,3 +41,14 @@ export function formatLength(progress_ms: number): string {
   const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
   return `${minutes}:${formattedSeconds}`;
 }
+
+/**
+ * Helper function to create slug from title
+ * @param title 
+ * @returns 
+ */
+export function createSlug(title: string) {
+  return title.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+};

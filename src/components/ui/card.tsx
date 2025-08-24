@@ -4,82 +4,147 @@ import { Experiment, Project } from "@/content"
 import { Badge } from "./badge"
 import ViewCounter from "./view-counter"
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
-      className
-    )}
-    {...props}
-  />
-))
-Card.displayName = "Card"
+function Card({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card"
+      className={cn(
+        "rounded-xl border bg-card text-card-foreground shadow",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-const ExperimentCard = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-header"
+      className={cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn("leading-none font-semibold", className)}
+      {...props}
+    />
+  )
+}
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-muted-foreground text-sm", className)}
+      {...props}
+    />
+  )
+}
+function CardAction({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("px-6", className)}
+      {...props}
+    />
+  )
+}
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
+      {...props}
+    />
+  )
+}
+
+function ExperimentCard({ className, experiment, ...props }:
+  React.ComponentProps<"div"> & {
     experiment: Experiment
-  }
->(({ className, experiment, ...props }, ref) => (
-  <Card ref={ref}
-    className={cn("group cursor-pointer border rounded-lg p-4 hover:shadow-md transition-all duration-200 hover:border-primary/20",
-      className)}
-    {...props}
-  >
-    <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
-      <time dateTime={experiment.publishedDate}>
-        {formatDate(experiment.publishedDate)}
-      </time>
-      <ViewCounter slug={experiment.slug} incrementView={false} />
-    </div>
-    <h2 className="text-xl group-hover:text-primary transition-colors md:text-2xl font-semibold">
-      {experiment.title}
-    </h2>
-  </Card>
-))
-ExperimentCard.displayName = "ExperimentCard"
+  }) {
+  return (
+    <Card
+      className={cn("group cursor-pointer border rounded-lg p-4 hover:shadow-md transition-all duration-200 hover:border-primary/20",
+        className)}
+      {...props}
+    >
+      <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
+        <time dateTime={experiment.publishedDate}>
+          {formatDate(experiment.publishedDate)}
+        </time>
+        <ViewCounter slug={experiment.slug} incrementView={false} />
+      </div>
+      <h2 className="text-xl group-hover:text-primary transition-colors md:text-2xl font-semibold">
+        {experiment.title}
+      </h2>
+    </Card>
+  )
+}
 
-const ProjectCard = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
+function ProjectCard({ className, project, ...props }:
+  React.ComponentProps<"div"> & {
     project: Project
-    onSelect: (project: Project) => void
-  }
->(({ className, project, onSelect, ...props }, ref) => (
-  <Card
-    ref={ref}
-    onClick={() => onSelect(project)}
-    className={cn(
-      "group cursor-pointer border rounded-lg p-4 hover:shadow-md transition-all duration-200 hover:border-primary/20",
-      className
-    )}
-    {...props}
-  >
-    <div className="flex items-start justify-between">
-      <div className="flex-1">
-        <div className="flex items-center gap-3 mb-2">
-          <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-            {project.title}
-          </h3>
+  }) {
+  return (
+    <Card
+      className={cn(
+        "group cursor-pointer border rounded-lg p-4 hover:shadow-md transition-all duration-200 hover:border-primary/20",
+        className
+      )}
+      {...props}
+    >
+      <div className="flex items-start justify-between">
+        <div className="flex-1">
+          <div className="flex items-center gap-3 mb-2">
+            <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+              {project.title}
+            </h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <Badge key={tech} variant="outline" className="text-xs">
+                {tech}
+              </Badge>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.map((tech) => (
-            <Badge key={tech} variant="outline" className="text-xs">
-              {tech}
-            </Badge>
-          ))}
+        <div className="text-sm text-muted-foreground ml-6">
+          {formatDate(project.displayDate.toString())}
         </div>
       </div>
-      <div className="text-sm text-muted-foreground ml-6">
-        {formatDate(project.displayDate.toString())}
-      </div>
-    </div>
-  </Card>
-))
-ProjectCard.displayName = "ProjectCard"
+    </Card>
+  )
+}
 
-export { Card, ExperimentCard, ProjectCard }
+
+export {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardAction,
+  CardContent,
+  CardFooter,
+  ExperimentCard,
+  ProjectCard
+}
