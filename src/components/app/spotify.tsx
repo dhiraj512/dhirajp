@@ -284,8 +284,8 @@ const NowPlaying = ({ nowPlaying }: { nowPlaying: NowPlayingTrack }) => {
                         <span>{formatLength(nowPlaying.duration)}</span>
                     </motion.div>
                 </div>
-            </div >
-        </Card >
+            </div>
+        </Card>
     )
 }
 
