@@ -1,5 +1,5 @@
 [data-rehype-pretty-code-figure] {
-    @apply relative my-6 mx-auto overflow-hidden rounded-lg border border-neutral-800 flex flex-col;
+    @apply relative my-0 mx-auto overflow-hidden rounded-lg border border-neutral-800 flex flex-col;
 }
 
 [data-rehype-pretty-code-title] {
@@ -77,14 +77,18 @@ code[data-line-numbers-max-digits="3"]>[data-line]::before {
     @apply !text-inherit;
 }
 
-[data-chars-id="v"] {
+[data-chars-id="p"] {
     @apply !text-pink-500 bg-rose-800/30 border-b-pink-600;
 }
 
-[data-chars-id="s"] {
+[data-chars-id="y"] {
     @apply !text-yellow-500 bg-yellow-800/30 border-b-yellow-600;
 }
 
-[data-chars-id="i"] {
-    @apply !text-purple-500 bg-purple-800/30 border-b-purple-600;
+[data-chars-id="v"] {
+    @apply !text-violet-500 bg-violet-800/30 border-b-violet-600;
+}
+
+[data-chars-id="c"] {
+    @apply !text-cyan-500 bg-cyan-800/30 border-b-cyan-600;
 }
