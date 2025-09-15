@@ -3,13 +3,13 @@
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Face } from "./face";
+import { getPageTitle } from "@/constants";
 
 export default function Header() {
     const pathname = usePathname();
     const isHome = pathname === "/";
 
-    const currentPath = pathname.split("/") || pathname.startsWith("/") ? pathname.split("/")[1] : pathname;
-
+    const currentPath = getPageTitle(pathname);
     return (
         <AnimatePresence>
             {!isHome && (
@@ -26,7 +26,7 @@ export default function Header() {
                 >
                     <div className="max-w-screen-sm mx-auto px-4 flex gap-2 items-center justify-between py-4 relative border-b border-gray-200 dark:border-gray-800">
                         <div className="inline-flex items-center gap-1">
-                            <h1 className="text-lg font-semibold">{currentPath}</h1>
+                            <h1 className="text-lg font-semibold capitalize">{currentPath}</h1>
                         </div>
                         <Face />
                     </div>

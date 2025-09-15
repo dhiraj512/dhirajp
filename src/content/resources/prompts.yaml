@@ -1,0 +1,20 @@
+# content/resources/prompts.yaml
+- title: "Code Review Assistant"
+  description: "Prompt for reviewing code quality"
+  prompt_type: "code-review"
+  model: "gpt-4"
+  tags: ["code", "review", "ai"]
+  code: |
+    Review the following code and provide feedback on quality, best practices, and any potential issues.
+    Focus on readability, maintainability, and performance.
+    If there are any suggestions, please include them in your response.
+
+- title: "Code Generation Assistant"
+  description: "Prompt for generating code"
+  prompt_type: "code-generation"
+  model: "gpt-4"
+  tags: ["code", "generation", "ai"]
+  code: |
+    Generate code for the following requirements: [insert requirements here]
+    The generated code should be in [insert language here].
+    The generated code should follow best practices for [insert language here].

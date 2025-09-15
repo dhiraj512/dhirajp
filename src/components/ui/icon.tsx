@@ -14,14 +14,14 @@ import {
     RxShare2,
     RxArrowTopRight
 } from 'react-icons/rx';
-import { PiBracketsCurlyBold, PiEye, PiFileSql, PiFileText } from 'react-icons/pi';
+import { PiEye, PiFileSql, PiFileText } from 'react-icons/pi';
 import { PiFlaskFill } from 'react-icons/pi';
 import { RiTwitterXLine } from 'react-icons/ri';
 import { SiArduino, SiC, SiCplusplus, SiCss3, SiHtml5, SiJavascript, SiMarkdown, SiMdx, SiNextdotjs, SiPython, SiReact, SiSpotify, SiTypescript, SiVercel } from "react-icons/si";
 import { BsEmojiSmileUpsideDownFill } from 'react-icons/bs';
 import { DiTerminal } from 'react-icons/di';
 import { GiSoapExperiment } from "react-icons/gi";
-import { LuBookOpen, LuFolderOpen, LuHeart, LuRocket, LuTag, LuTriangleAlert, LuExternalLink, LuGithub } from 'react-icons/lu';
+import { LuBookOpen, LuFile, LuFolder, LuFolderOpen, LuHeart, LuRocket, LuTag, LuTriangleAlert, LuExternalLink, LuGithub, LuGlobe, LuCode, LuMessageSquare, LuWrench } from 'react-icons/lu';
 import { VscJson } from 'react-icons/vsc';
 import { ReactNode } from 'react';
 
@@ -67,7 +67,6 @@ const Icon = {
     sql: PiFileSql,
     flask: PiFlaskFill,
     txtfile: PiFileText,
-    code: PiBracketsCurlyBold,
 
     // Dev Icons
     terminal: DiTerminal,
@@ -77,10 +76,15 @@ const Icon = {
 
     // Lucide Icons
     tag: LuTag,
+    code: LuCode,
+    wrench: LuWrench,
     github: LuGithub,
     heart: LuHeart,
-    folder: LuFolderOpen,
+    file: LuFile,
+    folder: LuFolder,
+    globe: LuGlobe,
     alert: LuTriangleAlert,
+    message: LuMessageSquare,
     rocket: LuRocket,
     bookopen: LuBookOpen,
     externalLink: LuExternalLink,
@@ -153,5 +157,31 @@ export const getLanguageIcon = (lang: string, className?: string): ReactNode => 
             return <Icon.code className={className} />;
     }
 };
+
+export const getCategoryIcon = (category: string) => {
+    let ResourceIcon = Icon.file;
+    switch (category.toLowerCase()) {
+        case "sites":
+            ResourceIcon = Icon.globe;
+            break;
+        case "prompts":
+            ResourceIcon = Icon.message;
+            break;
+        case "snippets":
+            ResourceIcon = Icon.code;
+            break;
+        default:
+            ResourceIcon = Icon.folder;
+            break;
+    }
+    return ResourceIcon;
+}
+
+export const CategoryIcon: Record<string, React.ComponentType<{ className?: string }>> = {
+    tools: Icon.wrench,
+    snippets: Icon.code,
+    prompts: Icon.message,
+    sites: Icon.globe,
+}
 
 export default Icon;

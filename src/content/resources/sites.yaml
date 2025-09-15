@@ -1,0 +1,15 @@
+# content/resources/sites.yaml
+- title: "Vercel"
+  description: "Deploy modern web applications"
+  url: "https://vercel.com"
+  tags: ["deployment", "hosting", "react"]
+
+- title: "GitHub"
+  description: "Code hosting platform"
+  url: "https://github.com"
+  tags: ["git", "code", "collaboration"]
+
+- title: "Stack Overflow"
+  description: "Programming questions and answers"
+  url: "https://stackoverflow.com"
+  tags: ["programming", "questions", "answers"]

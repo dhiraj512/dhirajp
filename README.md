@@ -34,3 +34,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## vercel-postgress
+
+### table schema
+
+```sql
+CREATE TABLE stats (
+    slug TEXT PRIMARY KEY,
+    likes INTEGER DEFAULT 0 NOT NULL,
+    views INTEGER DEFAULT 0 NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+    updated_at TIMESTAMP DEFAULT NOW() NOT NULL
+);
+CREATE TABLE user_interactions (
+    session_id TEXT NOT NULL,
+    slug TEXT NOT NULL,
+    likes INTEGER DEFAULT 0 NOT NULL,
+    has_viewed INTEGER DEFAULT 0 NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+    updated_at TIMESTAMP DEFAULT NOW() NOT NULL,
+    PRIMARY KEY (session_id, slug)
+);
+```

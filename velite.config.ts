@@ -2,7 +2,7 @@ import { defineConfig } from 'velite';
 import rehypeSlug from 'rehype-slug';
 import rehypePrettyCode from 'rehype-pretty-code'
 import { rpcOptions } from '@/config/options';
-import { Experiments, Projects } from '@/config/collections';
+import { Experiments, Projects, Resources } from '@/config/collections';
 
 const config = defineConfig({
     root: 'src/content',
@@ -13,7 +13,8 @@ const config = defineConfig({
         name: "[name]-[hash:6].[ext]",
         clean: true,
     },
-    collections: { Experiments, Projects },
+    collections: { Experiments, Projects, Resources },
+
     mdx: {
         rehypePlugins: [rehypeSlug, [rehypePrettyCode, rpcOptions]],
         remarkPlugins: [],

@@ -51,5 +51,34 @@ const Projects = defineCollection({
         }))
 });
 
-export { Experiments, Projects };
+const Resources = defineCollection({
+    name: 'Resource',
+    pattern: 'resources/*.yaml',
+    schema: s
+        .object({
+            path: s.path(),
+            title: s.string(),
+            description: s.string().optional(),
+            tags: s.array(s.string()).optional().default([]),
+            url: s.string().url().optional(),
+            icon: s.string().optional(),
+            screenshot: s.string().optional(),
+            code: s.string().optional().transform(val => val?.replace(/\n+$/, '')),
+            language: s.string().optional(),
+            highlightLines: s.string().optional(),
+            highlightWords: s.array(s.string()).optional(),
+            fileName: s.string().optional(),
+            prompt_type: s.string().optional(),
+            model: s.string().optional()
+        })
+        .transform((data) => ({
+            ...data,
+            // Auto-set category from filename
+            category: data.path.split('/').pop()?.replace('.yaml', '') || 'unknown',
+            // Generate slug from title
+            slug: createSlug(data.title),
+        }))
+})
+
+export { Experiments, Projects, Resources };
 

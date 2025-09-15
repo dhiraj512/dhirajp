@@ -1,8 +1,9 @@
 import * as React from "react"
 import { cn, formatDate } from "@/lib/utils"
-import { Experiment, Project } from "@/content"
+import { Experiment, Project, Resource } from "@/content"
 import { Badge } from "./badge"
 import ViewCounter from "./view-counter"
+import { getCategoryConfig } from "@/config/category"
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -136,6 +137,24 @@ function ProjectCard({ className, project, ...props }:
   )
 }
 
+function ResourceCard({ className, resource }: { className?: string, resource: Resource }) {
+
+  const { icon: ResourceIcon, iconColor, hover } = getCategoryConfig(resource.category);
+
+  return (
+    <Card className={cn("group px-4 py-2 rounded-lg flex items-center justify-start gap-4 hover:shadow-sm transition-shadow", className, hover)}>
+
+      <ResourceIcon className={cn("size-6", iconColor)} />
+      <div className="flex-1">
+        <h2 className={cn("text-xl text-foreground leading-snug line-clamp-2", hover)}>{resource.title}</h2>
+        {resource.description && (
+          <p className="text-sm !text-muted-foreground">{resource.description}</p>
+        )}
+      </div>
+    </Card>
+  )
+}
+
 
 export {
   Card,
@@ -146,5 +165,6 @@ export {
   CardContent,
   CardFooter,
   ExperimentCard,
-  ProjectCard
+  ProjectCard,
+  ResourceCard,
 }
